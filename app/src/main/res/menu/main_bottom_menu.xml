@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="@string/lancamentos"
+        android:icon="@drawable/ic_baseline_home"
+        android:id="@+id/theatresFragment"/>
+    <item android:title="@string/populares"
+        android:icon="@drawable/ic_baseline_star"
+        android:id="@+id/popularFragment"
+        />
+    <item android:title="@string/genero"
+        android:icon="@drawable/ic_baseline_view_headline"
+        android:id="@+id/genreFragment"/>
+
+</menu>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:paddingLeft="5dp"
+    android:paddingBottom="5dp">
+    <ImageView
+        android:id="@+id/imgMovieCompany"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:maxHeight="70dp"
+        android:scaleType="centerInside"
+        android:layout_centerHorizontal="true"/>
+    <TextView
+        android:id="@+id/txtMovieCompany"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imgMovieCompany"
+        android:layout_centerHorizontal="true"
+        style="@style/ItemTextContent2"
+        android:gravity="center"/>
+</RelativeLayout>

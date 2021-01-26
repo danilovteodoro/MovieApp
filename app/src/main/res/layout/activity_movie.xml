@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/coordinator"
+    >
+
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestScroll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+                android:clickable="true"
+                android:focusable="true">
+
+                <TextView
+                    android:id="@+id/txtMovieName"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_centerInParent="true"
+                    android:ellipsize="end"
+                    android:padding="5dp"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="30sp" />
+
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.6dp"
+                android:layout_margin="2dp"
+                android:background="#111" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:paddingTop="2dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="2dp">
+
+               <TextView
+                   android:layout_width="0dp"
+                   android:layout_height="wrap_content"
+                   android:text="Rate:"
+                   android:id="@+id/labelRate"
+                   app:layout_constraintTop_toTopOf="parent"
+                   app:layout_constraintLeft_toLeftOf="parent"
+
+                   android:textStyle="bold"
+                   android:textColor="#111"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="9.6"
+                    android:id="@+id/txtRate"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintLeft_toRightOf="@id/labelRate"
+                    app:layout_constraintRight_toLeftOf="@+id/labelPopularity"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="5dp"
+                    android:textColor="#fff"
+                    android:background="@drawable/shape_rate_red"
+                    />
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Popularity:"
+                    android:id="@+id/labelPopularity"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintLeft_toRightOf="@id/txtRate"
+                    app:layout_constraintRight_toLeftOf="@+id/txtPopularity"
+                    android:textStyle="bold"
+                    android:textColor="#111"
+                    android:gravity="end"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="9.6"
+                    android:id="@+id/txtPopularity"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintLeft_toRightOf="@id/labelPopularity"
+                    app:layout_constraintRight_toLeftOf="@+id/labelTotalVotes"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="5dp"
+                    />
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Total Votes:"
+                    android:id="@+id/labelTotalVotes"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintLeft_toRightOf="@id/txtPopularity"
+                    app:layout_constraintRight_toLeftOf="@+id/txtTotalVotes"
+                    android:gravity="end"
+                    android:textStyle="bold"
+                    android:textColor="#111"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="9.6"
+                    android:layout_marginLeft="5dp"
+                    android:id="@+id/txtTotalVotes"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintLeft_toRightOf="@id/labelTotalVotes"
+                    app:layout_constraintRight_toRightOf="parent"
+                    android:textStyle="bold"
+                    />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.6dp"
+                android:background="#111"
+                android:layout_margin="2dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtOverView"
+                style="@style/ItemTextContent"
+                android:paddingTop="15dp"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.6dp"
+                android:background="@color/colorPrimaryDark"
+                android:layout_margin="2dp"/>
+
+            <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:id="@+id/layoutGenre">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/generos"
+                style="@style/texto18"
+                android:layout_margin="5dp"
+                />
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/rcGenres"
+                android:layout_margin="5dp"
+                android:nestedScrollingEnabled="false"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.6dp"
+                android:background="@color/colorPrimaryDark"
+                android:layout_margin="2dp"/>
+        </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:id="@+id/layoutCompanies">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/prodCOmpanies"
+                    style="@style/texto18"
+                    android:layout_margin="5dp"
+                    />
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/rcCompanies"
+                    android:layout_margin="5dp"
+                    android:nestedScrollingEnabled="false"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.6dp"
+                    android:background="@color/colorPrimaryDark"
+                    android:layout_margin="2dp"/>
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:id="@+id/appbarL"
+        android:background="@color/colorWhite"
+        style="@style/texto18.white"
+        android:theme="@style/Theme.MovieApp"
+        android:fitsSystemWindows="true"
+
+
+        >
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:contentScrim="?attr/colorPrimary"
+            android:id="@+id/collapse"
+            android:fitsSystemWindows="true"
+            app:collapsedTitleTextAppearance="@style/texto18.white"
+
+            >
+            <ImageView
+                android:id="@+id/imgCollapse"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_collapseMode="parallax"
+                android:cropToPadding="true"
+                android:scaleType="centerCrop"
+                app:layout_collapseParallaxMultiplier="0.7"
+                android:fitsSystemWindows="true"
+
+                />
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:padding="1dp"
+                android:background="@drawable/shape_image_movie_dark"
+                android:layout_margin="2dp">
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="1dp"
+                    android:background="@drawable/shape_image_movie"
+
+                    >
+                    <ImageView
+                        android:layout_width="130dp"
+                        android:id="@+id/imgMovie"
+                        android:layout_height="150dp"
+                        android:scaleType="centerCrop"
+                        app:layout_collapseMode="parallax"
+                        android:layout_gravity="bottom"
+                        android:background="@color/colorWhite"
+
+                        app:layout_collapseParallaxMultiplier="0.4"
+                        />
+                </FrameLayout>
+            </FrameLayout>
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/appbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_collapseMode="pin"
+                app:titleTextColor="@color/colorPrimary"
+                app:titleTextAppearance="@style/texto18"
+
+                />
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <include layout="@layout/layout_error"
+        android:id="@+id/layoutError"
+        android:visibility="gone"
+        />
+
+    <androidx.core.widget.ContentLoadingProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/Widget.AppCompat.ProgressBar"
+        android:layout_gravity="center"
+        android:id="@+id/progrress"
+        android:visibility="gone"/>
+    
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

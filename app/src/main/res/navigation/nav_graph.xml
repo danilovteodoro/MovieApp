@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/theatresFragment">
+
+    <fragment
+        android:id="@+id/theatresFragment"
+        android:name="dev.danilovteodoro.movieapp.ui.fragment.TheatresFragment"
+        android:label="fragment_theatres"
+        tools:layout="@layout/fragment_theatres" />
+    <fragment
+        android:id="@+id/popularFragment"
+        android:name="dev.danilovteodoro.movieapp.ui.fragment.PopularFragment"
+        android:label="fragment_popular"
+        tools:layout="@layout/movies_layout" />
+    <fragment
+        android:id="@+id/genreFragment"
+        android:name="dev.danilovteodoro.movieapp.ui.fragment.GenreFragment"
+        android:label="fragment_genre"
+        tools:layout="@layout/fragment_genre" />
+</navigation>
