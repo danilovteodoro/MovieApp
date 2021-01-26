@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
+import android.view.MenuItem
 import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -102,6 +103,11 @@ class MovieActivity : AppCompatActivity() {
                 }else ->{}
             }
         })
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if(item.itemId == android.R.id.home) finish()
+        return super.onOptionsItemSelected(item)
     }
 
     private fun updateLayout(movie:Movie){
