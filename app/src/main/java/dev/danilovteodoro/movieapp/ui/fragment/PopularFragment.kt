@@ -66,16 +66,16 @@ class PopularFragment : Fragment() {
             }
         }
         adapter = MovieAdapter(requireContext(),getString(R.string.header_popolarity))
-        binding.rcPopularMovies.layoutManager = layoutManager
-        binding.rcPopularMovies.adapter = adapter
-        binding.rcPopularMovies.addOnScrollListener(object :RecyclerView.OnScrollListener(){
+        binding.rcMovies.layoutManager = layoutManager
+        binding.rcMovies.adapter = adapter
+        binding.rcMovies.addOnScrollListener(object :RecyclerView.OnScrollListener(){
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                if (!binding.rcPopularMovies.canScrollVertically(1)){
+                if (!binding.rcMovies.canScrollVertically(1)){
                     viewModel.setStateListener(MovieStateListener.GetPopulars)
                 }
             }
         })
-        binding.rcPopularMovies.onItemTouch { position, _ ->
+        binding.rcMovies.onItemTouch { position, _ ->
             adapter.get(position)?.let { movie->
                 MovieActivity.start(requireActivity(),movie.id)
             }
@@ -88,7 +88,7 @@ class PopularFragment : Fragment() {
                 is DataState.Success -> {
                     hideProgress()
                     adapter.add(dataState.value)
-                    binding.rcPopularMovies.scrollBy(binding.rcPopularMovies.scrollX,binding.rcPopularMovies.scrollY + 100)
+                    binding.rcMovies.scrollBy(binding.rcMovies.scrollX,binding.rcMovies.scrollY + 100)
           
                 }
 
@@ -117,7 +117,7 @@ class PopularFragment : Fragment() {
     private fun showProgress(){
         if(adapter.itemCount == 1){
             binding.contentProgress.visibility = View.VISIBLE
-            binding.rcPopularMovies.visibility = View.GONE
+            binding.rcMovies.visibility = View.GONE
             return
         }
         binding.progrress.visibility = View.VISIBLE
@@ -126,18 +126,18 @@ class PopularFragment : Fragment() {
     private fun hideProgress(){
         binding.contentProgress.visibility = View.GONE
         binding.progrress.visibility = View.GONE
-        binding.rcPopularMovies.visibility = View.VISIBLE
+        binding.rcMovies.visibility = View.VISIBLE
     }
 
 
     private fun showError(){
         binding.layoutError.mainLayout.visibility = View.VISIBLE
-        binding.rcPopularMovies.visibility = View.GONE
+        binding.rcMovies.visibility = View.GONE
     }
 
     private fun hideError(){
         binding.layoutError.mainLayout.visibility = View.GONE
-        binding.rcPopularMovies.visibility = View.VISIBLE
+        binding.rcMovies.visibility = View.VISIBLE
     }
 
 

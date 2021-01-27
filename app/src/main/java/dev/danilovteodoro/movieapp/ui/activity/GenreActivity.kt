@@ -19,6 +19,7 @@ import dev.danilovteodoro.movieapp.ui.adapter.MovieAdapter
 import dev.danilovteodoro.movieapp.ui.viewmodel.MovieStateListener
 import dev.danilovteodoro.movieapp.ui.viewmodel.MovieViewModel
 import util.DataState
+import util.onItemTouch
 
 @AndroidEntryPoint
 class GenreActivity : AppCompatActivity() {
@@ -76,15 +77,20 @@ class GenreActivity : AppCompatActivity() {
         }
         val header = "${genero.name} Movies"
         adapter = MovieAdapter(this, header)
-        binding.rcPopularMovies.layoutManager = layoutManager
-        binding.rcPopularMovies.adapter = adapter
-        binding.rcPopularMovies.addOnScrollListener(object : RecyclerView.OnScrollListener(){
+        binding.rcMovies.layoutManager = layoutManager
+        binding.rcMovies.adapter = adapter
+        binding.rcMovies.addOnScrollListener(object : RecyclerView.OnScrollListener(){
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                if (!binding.rcPopularMovies.canScrollVertically(1)){
+                if (!binding.rcMovies.canScrollVertically(1)){
                     viewModel.setStateListener(MovieStateListener.GetByGenres)
                 }
             }
         })
+        binding.rcMovies.onItemTouch { position, _ ->
+            adapter.get(position)?.let { movie->
+                MovieActivity.start(this,movie.id)
+            }
+        }
     }
 
     private fun registerObserver(){
@@ -94,7 +100,7 @@ class GenreActivity : AppCompatActivity() {
                 is DataState.Success -> {
                     hideProgress()
                     adapter.add(dataState.value)
-                    binding.rcPopularMovies.scrollBy(binding.rcPopularMovies.scrollX,binding.rcPopularMovies.scrollY + 100)
+                    binding.rcMovies.scrollBy(binding.rcMovies.scrollX,binding.rcMovies.scrollY + 100)
 
                 }
 
@@ -122,7 +128,7 @@ class GenreActivity : AppCompatActivity() {
     private fun showProgress(){
         if(adapter.itemCount == 1){
             binding.contentProgress.visibility = View.VISIBLE
-            binding.rcPopularMovies.visibility = View.GONE
+            binding.rcMovies.visibility = View.GONE
             return
         }
         binding.progrress.visibility = View.VISIBLE
@@ -131,17 +137,17 @@ class GenreActivity : AppCompatActivity() {
     private fun hideProgress(){
         binding.contentProgress.visibility = View.GONE
         binding.progrress.visibility = View.GONE
-        binding.rcPopularMovies.visibility = View.VISIBLE
+        binding.rcMovies.visibility = View.VISIBLE
     }
 
 
     private fun showError(){
         binding.layoutError.mainLayout.visibility = View.VISIBLE
-        binding.rcPopularMovies.visibility = View.GONE
+        binding.rcMovies.visibility = View.GONE
     }
 
     private fun hideError(){
         binding.layoutError.mainLayout.visibility = View.GONE
-        binding.rcPopularMovies.visibility = View.VISIBLE
+        binding.rcMovies.visibility = View.VISIBLE
     }
 }
